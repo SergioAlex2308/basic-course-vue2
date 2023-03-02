@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Curso Basico de Vue.js | Platzi</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+
+  <div id="app">
+    <img 
+      v-on:mouseover="toggleShowPrices" 
+      v-on:mouseout="toggleShowPrices" 
+      v-bind:src="img" :alt="name">
+    <h1>
+      {{ name }}
+      <span> {{ changePercent > 0 ? '👆' : '👇'}}</span>
+    </h1>
+
+    <span v-on:click="toggleShowPrices">
+      {{ showPrices ? 'Ocultar precios' : 'Mostrar Precios'}}
+    </span>
+
+    <ul>
+      <li v-for="(price, index) in prices" :key="price">
+        {{ index }} - {{ price }}
+      </li>
+    </ul>
+
+    <ul v-show="showPrices">
+      <li v-for="(p, index) in pricesWithDays" :key="p.day">
+        {{ index }} - {{ p.day }} - {{ p.value }}
+      </li>
+    </ul>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
