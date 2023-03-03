@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,400&display=swap"
+		rel="stylesheet">
+	<title>Course Tracker</title>
+</head>
+
+<body>
+	<div id="app">
+		<div class="coursesInput">
+			<h1>My Platzi Courses💚</h1>
+			<input required type="text" placeholder="Course title" v-model="title" />
+			<input required type="number" placeholder="Hours" v-model="time" />
+			<button v-on:click="addCourse">Guardar Curso</button>
+		</div>
+		<div class="summary">
+			<h3>Lista de Cursos</h3>
+			<div class="summary_list">
+				<ol>
+					<li v-for="course in courses">
+						{{ course.courseTitle }} de {{ course.courseTime}} horas
+					</li>
+				</ol>
+				<hr />
+				<p v-show="totalTime === 0">
+					Aún no has empezado a aprender!, ¿Qué esperas?
+				</p>
+				<p v-show="totalTime > 0">
+					Llevo <strong>{{ totalTime }}</strong> horas aprendiendo en Platzi.
+					<b>#NuncaParesDeAprender 💚</b>
+				</p>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="app.js"></script>
+</body>
+
+</html>
