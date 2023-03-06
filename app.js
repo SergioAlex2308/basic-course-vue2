@@ -12,7 +12,7 @@ Vue.component('CoinDetail', {
     toggleShowPrices() {
       this.showPrices = !this.showPrices;
       this.$emit('change-color',
-      this.showPrices ? 'F4F4F4' : '3D3D3D');
+      this.showPrices ? '3D3D3D' : 'F4F4F4');
     }
   },
   computed: {
@@ -25,6 +25,14 @@ Vue.component('CoinDetail', {
       }
       return this.value / this.price;
     }
+  },
+
+  created () {
+    console.log('Created CoinDetail...');
+  },
+  
+  mounted () {
+    console.log('Mounted CoinDetail..');
   },
   template: `
   <div>
@@ -41,6 +49,9 @@ Vue.component('CoinDetail', {
 
     <input type="number"  v-model="value"/>
     <span> {{ convertedValue }}</span>
+
+    <slot name="text"></slot>
+    <slot name="link"></slot>
 
     <ul v-show="showPrices">
       <li class="uppercase" :class="{orange: p.value === coin.price, red: p.value < coin.price, green: p.value > coin.price}"
@@ -82,6 +93,14 @@ new Vue({
       },
       color: 'F4F4F4',
     }
+  },
+
+  created () {
+    console.log('Created...');
+  },
+  
+  mounted () {
+    console.log('Mounted...');
   },
 
   methods: {

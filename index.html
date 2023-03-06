@@ -12,9 +12,19 @@
 <body>
 
   <div id="app" :style="{ background: '#' + color}">
-    
-    
-    <coin-detail v-on:change-color="updateColor" :coin="btc"></coin-detail>
+
+
+    <coin-detail v-on:change-color="updateColor" :coin="btc">
+      <template v-slot:text>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae dolore nisi dolorum necessitatibus
+          facilis distinctio similique eaque fuga, pariatur voluptatum unde suscipit quasi autem sed? Iure unde doloremque
+          commodi saepe!</p>
+      </template>
+
+      <template v-slot:link>
+        <a href="/">Link!</a>
+      </template>
+    </coin-detail>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
